@@ -1,4 +1,7 @@
-# Created by pytest automatically.
-* .idea/
-* __pycache__
-
+.idea/
+.pytest_cache/
+*.log
+*.png
+*__pycache__
+reports/
+assets/
