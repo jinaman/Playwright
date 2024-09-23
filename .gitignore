@@ -6,3 +6,4 @@ tests_ui/.pytest_cache/
 *__pycache__
 reports/
 assets/
+/utils/secret_config.py

@@ -4,6 +4,14 @@ from playwright.sync_api import Playwright, sync_playwright, expect
 from pom.home_page import HomePage
 import pytest
 
+try:
+    PASSWORD = os.environ["PASSWORD"]  #Si estoy corriendo el pipeline va a encontrar esta variable en los secrets de github
+except KeyError:                      #Si no esta me levanta un KerError
+    import utils.secret_config
+    PASSWORD = utils.secret_config.PASSWORD #Si lo corro local me reconoce esta variable
+
+
+
 
 @pytest.mark.smoke
 @pytest.mark.regression
@@ -35,7 +43,7 @@ def test_parametrizando2(set_up):
     page = set_up
     home_page = HomePage(page)
     home_page.enter_username("student")
-    home_page.enter_password(os.environ["PASSWORD"])
+    home_page.enter_password(PASSWORD)   #Password123
     home_page.click_submit()
     page.wait_for_timeout(2000)
     home_page.click_logout()
