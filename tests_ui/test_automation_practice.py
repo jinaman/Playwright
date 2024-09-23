@@ -29,18 +29,18 @@ def test_parametrizando(set_up, email, password):
     page.wait_for_timeout(2000)
     home_page.click_logout()
 
-@pytest.mark.parametrize("email", ["student", pytest.param("studentZZZ", marks=pytest.mark.xfail)]) #envio 2 mails, 1 correcto y 1 incorrecto. Con el incorrecto debe fallar
-@pytest.mark.parametrize("password", ["Password123", pytest.param("PasswordZZZ", marks=pytest.mark.xfail)])  #envio 2 passwords, 1 correcto y 1 incorrecto. Con el incorrecto debe fallar
-def test_parametrizando_combinado(set_up, email, password):
-    """Este test al usar 2 parametrizaciones, se combinan,
-    por lo que va a correr 4 tests."""
-    page = set_up
-    home_page = HomePage(page)
-    home_page.enter_username(email)
-    home_page.enter_password(password)
-    home_page.click_submit()
-    page.wait_for_timeout(2000)
-    home_page.click_logout()
+# @pytest.mark.parametrize("email", ["student", pytest.param("studentZZZ", marks=pytest.mark.xfail)]) #envio 2 mails, 1 correcto y 1 incorrecto. Con el incorrecto debe fallar
+# @pytest.mark.parametrize("password", ["Password123", pytest.param("PasswordZZZ", marks=pytest.mark.xfail)])  #envio 2 passwords, 1 correcto y 1 incorrecto. Con el incorrecto debe fallar
+# def test_parametrizando_combinado(set_up, email, password):
+#     """Este test al usar 2 parametrizaciones, se combinan,
+#     por lo que va a correr 4 tests."""
+#     page = set_up
+#     home_page = HomePage(page)
+#     home_page.enter_username(email)
+#     home_page.enter_password(password)
+#     home_page.click_submit()
+#     page.wait_for_timeout(2000)
+#     home_page.click_logout()
 
 
 

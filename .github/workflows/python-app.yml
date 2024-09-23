@@ -1,21 +1,21 @@
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
-name: Python application
+name: Playwrigth tests           #Solo el nombre, se puede cambiar
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+on:                              #Que eventos activan el flujo
+  push:                          # Este evento se activa cuando se realiza un "push" (es decir, se suben cambios) a una rama en el repositorio.
+    branches: [ "main" ]         # Indica que el flujo de trabajo solo se activará si el "push" se realiza en la rama "main".
+  pull_request:                  #Este evento se activa cuando se abre, cierra, o actualiza un "pull request" en el repositorio.
+    branches: [ "main" ]         #Indica que el flujo de trabajo solo se activará si el "pull request" afecta a la rama "main".
 
 permissions:
   contents: read
 
 jobs:
-  build:
+  build:                         #Es el nombre del build. Lo puedo cambiar. Por ej: tests:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest       #En que entorno se corre. runs-on: windows-latest , runs-on: macos-latest
 
     steps:
     - uses: actions/checkout@v4
@@ -23,11 +23,14 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: "3.10"
-    - name: Install dependencies
+    - name: Install dependencies     #Flake8 es un lintern, no debe hacer falta. Instalo pytest
       run: |
         python -m pip install --upgrade pip
-        pip install flake8 pytest
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        pip install flake8 pytest-playwright            
+        python -m pip install playwright
+    - name: Install browsers                         # if [ -f requirements.txt ]; then pip install -r requirements.txt; fi si tuviera un requirements
+      run: |
+        python -m playwright install
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
