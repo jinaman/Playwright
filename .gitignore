@@ -1,0 +1,8 @@
+tests_ui/.pytest_cache/
+.idea/
+.pytest_cache/
+*.log
+*.png
+*__pycache__
+reports/
+assets/
