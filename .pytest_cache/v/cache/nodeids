@@ -1,6 +1,0 @@
-[
-  "tests_ui/test_automation_practice.py::test_parametrizando_combinado[chromium-Password123-studentZZZ]",
-  "tests_ui/test_automation_practice.py::test_parametrizando_combinado[chromium-Password123-student]",
-  "tests_ui/test_automation_practice.py::test_parametrizando_combinado[chromium-PasswordZZZ-studentZZZ]",
-  "tests_ui/test_automation_practice.py::test_parametrizando_combinado[chromium-PasswordZZZ-student]"
-]
