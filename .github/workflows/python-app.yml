@@ -28,7 +28,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest-playwright            
         python -m pip install playwright
-    - name: Install browsers                         # if [ -f requirements.txt ]; then pip install -r requirements.txt; fi si tuviera un requirements
+    - name: Install browsers                    #python -m playwright install chromium (si quiero instalar solo 1 browser y que sea mas rapido)    # if [ -f requirements.txt ]; then pip install -r requirements.txt; fi si tuviera un requirements
       run: |
         python -m playwright install
     - name: Lint with flake8
@@ -38,5 +38,7 @@ jobs:
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
+      env:
+        PASSWORD: ${{secrets.PASSWORD}}
       run: |
         pytest

@@ -1,3 +1,5 @@
+import os
+
 from playwright.sync_api import Playwright, sync_playwright, expect
 from pom.home_page import HomePage
 import pytest
@@ -19,12 +21,21 @@ def test_entrar_al_automation_practice2(login_set_up):
     expect(home_page.header_practice).to_be_visible()
     expect(home_page.header_courses).to_be_visible()
 
-@pytest.mark.parametrize("email, password", [("student", "Password123" ), pytest.param("student", "PasswordZZZZZZZZZZ", marks=pytest.mark.xfail)]) #Se corren 2 tests. Se aclara que el 2do tiene que fallar xq el password es incorrecto.
-def test_parametrizando(set_up, email, password):
+# @pytest.mark.parametrize("email, password", [("student", "Password123" ), pytest.param("student", "PasswordZZZZZZZZZZ", marks=pytest.mark.xfail)]) #Se corren 2 tests. Se aclara que el 2do tiene que fallar xq el password es incorrecto.
+# def test_parametrizando(set_up, email, password):
+#     page = set_up
+#     home_page = HomePage(page)
+#     home_page.enter_username(email)
+#     home_page.enter_password(password)
+#     home_page.click_submit()
+#     page.wait_for_timeout(2000)
+#     home_page.click_logout()
+
+def test_parametrizando2(set_up):
     page = set_up
     home_page = HomePage(page)
-    home_page.enter_username(email)
-    home_page.enter_password(password)
+    home_page.enter_username("student")
+    home_page.enter_password(os.environ["PASSWORD"])
     home_page.click_submit()
     page.wait_for_timeout(2000)
     home_page.click_logout()
