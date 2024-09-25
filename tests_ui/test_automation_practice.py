@@ -12,7 +12,7 @@ PASSWORD = os.environ["PASSWORD"]    #Mejor estandar, me trae lo que tengo en el
 #     PASSWORD = os.environ["PASSWORD"]  #Si estoy corriendo el pipeline va a encontrar esta variable en los secrets de github
 # except KeyError:                      #Si no esta me levanta un KerError
 #     import utils.secret_config
-#     PASSWORD = utils.secret_config.PASSWORD #Si lo corro local me reconoce esta variable.
+#     PASSWORD = utils.secret_config.PASSWORD #Si lo corro local me reconoce esta variable..
 
 
 
