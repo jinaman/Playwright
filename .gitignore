@@ -7,3 +7,4 @@ tests_ui/.pytest_cache/
 reports/
 assets/
 /utils/secret_config.py
+*.env

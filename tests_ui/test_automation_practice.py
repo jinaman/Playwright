@@ -3,12 +3,16 @@ import os
 from playwright.sync_api import Playwright, sync_playwright, expect
 from pom.home_page import HomePage
 import pytest
+import pytest_dotenv    #pip install pytest_dotenv
 
-try:
-    PASSWORD = os.environ["PASSWORD"]  #Si estoy corriendo el pipeline va a encontrar esta variable en los secrets de github
-except KeyError:                      #Si no esta me levanta un KerError
-    import utils.secret_config
-    PASSWORD = utils.secret_config.PASSWORD #Si lo corro local me reconoce esta variable
+PASSWORD = os.environ["PASSWORD"]    #Mejor estandar, me trae lo que tengo en el archivo .env si es local. #Si estoy corriendo el pipeline va a encontrar esta variable en los secrets de github
+
+
+# try:
+#     PASSWORD = os.environ["PASSWORD"]  #Si estoy corriendo el pipeline va a encontrar esta variable en los secrets de github
+# except KeyError:                      #Si no esta me levanta un KerError
+#     import utils.secret_config
+#     PASSWORD = utils.secret_config.PASSWORD #Si lo corro local me reconoce esta variable
 
 
 
