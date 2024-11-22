@@ -67,6 +67,7 @@ def test_parametrizando2(set_up):
 #     home_page.click_logout()
 
 
+@pytest.mark.skip
 def test_visual(page, assert_snapshot):
     page.goto("https://ambito.com.ar")
     assert_snapshot(page.screenshot(full_page=True)) #El full_page es opcional, me saca el screen de toda la pagina con el scrolleo hacia abajo
