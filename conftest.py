@@ -30,7 +30,7 @@ from pom.home_page import HomePage
 #LO DE ARRIBA ESTA BIEN, PERO SE LOGUEA CADA VEZ, PARA CADA TEST. ESTE ES UN NUEVO APPROACH DONDE SE ABRE UNA NUEVA TAB DONDE YA ESTA LOGUEADO.
 @pytest.fixture(scope="session")
 def context_creation(playwright):
-    browser = playwright.chromium.launch(headless=False) #Probar context = browser.new_context(http_credentials={'username': 'admin', 'password': 'admin'})
+    browser = playwright.chromium.launch()#(headless=False) #Probar context = browser.new_context(http_credentials={'username': 'admin', 'password': 'admin'})
     context = browser.new_context()
     page = context.new_page()  # open new tab
     page.goto("https://practicetestautomation.com/practice-test-login/")
@@ -58,7 +58,7 @@ def context_creation(playwright):
 # Otra opcion de esta ultima fixture. #CREO DISTINTAS INSTANCES DE BROWSERS, mejor que solo ventanas nuevas.
 @pytest.fixture()
 def login_set_up(context_creation, playwright):
-    browser = playwright.chromium.launch(headless=False, slow_mo=400)
+    browser = playwright.chromium.launch()#(headless=False, slow_mo=400)
     context = browser.new_context(storage_state='state.json')  #Al haber guardado el context en un archivo en la linea 43, ahora lo uso aca y en vez de abrir una nueva tab me abre una nueva pagina por cada test.
     page = context.new_page()
     page.goto("https://practicetestautomation.com")
