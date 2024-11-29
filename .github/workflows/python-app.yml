@@ -39,6 +39,6 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       env:
-        PASSWORD: ${{secrets.PASSWORD}}
+        PASSWORD: ${{secrets.PASSWORD}}   #Lo agrego para que GitHub Actions sepa que agregue a secrets de GitHub la variable PASSWORD
       run: |
         pytest
